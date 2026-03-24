@@ -43,7 +43,6 @@ online_event_booking/
 ├── movies.html              # Movie category page
 ├── prerelease.html          # Pre-release event page
 ├── profile.html             # User profile/settings
-├── README.md                # Project documentation
 ├── register.html            # New user registration
 ├── script-secure.js         # Security-related JavaScript logic
 ├── script.js                # Main application JavaScript
