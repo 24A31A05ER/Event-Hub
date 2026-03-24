@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Details - EventHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="logo"><a href="home.html">EventHub</a></div>
+  <nav class="nav-links" id="navbar-links"></nav>
+</nav>
+<main class="container" style="padding:20px;max-width:1000px;margin:auto;">
+  <div id="detailsContent" class="event-details-card" style="background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.12);padding:20px;">
+    <h2>Event details</h2>
+    <p>Loading event details...</p>
+  </div>
+</main>
+<script src="script.js"></script>
+<script>
+  renderNavbar();
+  const detailsContent = document.getElementById('detailsContent');
+  let selectedEvent;
+  try {
+    selectedEvent = JSON.parse(sessionStorage.getItem('selectedEvent'));
+  } catch { selectedEvent = null; }
+  if (!selectedEvent || !selectedEvent.title) {
+    detailsContent.innerHTML = '<h2>Event not found</h2><p>Please select an event from the events page.</p><a href="events.html" class="btn btn-primary">Back to Events</a>';
+  } else {
+    detailsContent.innerHTML = `
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px;">
+        <div style="flex:1 1 350px;">
+          <img src="${selectedEvent.image || 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=80'}" alt="${selectedEvent.title}" style="width:100%;height:260px;object-fit:cover;border-radius:10px;" />
+        </div>
+        <div style="flex:1 1 350px;">
+          <h1 style="margin-top:0;color:#0D4D84;">${selectedEvent.title}</h1>
+          <p style="margin:5px 0;font-size:14px;color:#476280;">${selectedEvent.category || 'General'}</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;font-weight:600;">
+            <div>Date: ${selectedEvent.date || 'N/A'}</div>
+            <div>Location: ${selectedEvent.location || 'N/A'}</div>
+          </div>
+          <div style="margin-bottom:14px;font-weight:700;">Price: ₹${selectedEvent.price || 0}</div>
+          <h3 style="margin-bottom:5px;">About Event</h3>
+          <p style="color:#3a4c63;">${selectedEvent.description || 'No description available.'}</p>
+          <div class="event-detail-actions" style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="event-detail-btn event-detail-primary" onclick="selectEvent(selectedEvent)">Book Ticket</button>
+            <a href="events.html" class="event-detail-btn event-detail-secondary">Back to Events</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+</script>
+</body>
+</html>

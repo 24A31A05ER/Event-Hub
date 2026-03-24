@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile | EventHub</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+<div class="logo">
+<a href="home.html">EventHub</a>
+</div>
+
+<nav class="nav-links" id="navbar-links"></nav>
+</header>
+
+
+<!-- PROFILE PAGE -->
+
+<section class="profile-page">
+
+<div class="profile-card">
+
+<div class="profile-header">
+
+<div class="avatar" id="avatar">U</div>
+
+<div class="user-info">
+
+<h2 id="userName">User Name</h2>
+
+<p id="userEmail">user@email.com</p>
+
+</div>
+
+</div>
+
+
+<div class="profile-grid">
+
+<div class="info-box">
+
+<h4>📍 Location</h4>
+
+<p>
+
+<img id="userFlag" class="flag">
+
+<span id="userLocation">India</span>
+
+</p>
+
+</div>
+
+
+<div class="info-box">
+
+<h4>🎟 Total Bookings</h4>
+
+<p id="bookingCount">0</p>
+
+</div>
+
+</div>
+
+
+<div class="profile-actions">
+
+<button class="btn btn-edit" onclick="openEdit()">Edit Profile</button>
+
+<button class="btn btn-logout" id="logoutBtn" onclick="logout()">Logout</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EDIT PROFILE MODAL -->
+
+<div class="edit-modal" id="editModal">
+
+<div class="edit-box">
+
+<h3>Edit Profile</h3>
+
+<input type="text" id="editName" placeholder="Name">
+
+<select id="editLocation">
+
+<option value="India">India</option>
+<option value="USA">USA</option>
+<option value="UK">UK</option>
+<option value="Australia">Australia</option>
+
+</select>
+
+<div class="edit-actions">
+
+<button onclick="saveProfile()">Save</button>
+<button onclick="closeEdit()">Cancel</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

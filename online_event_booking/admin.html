@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - EventHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo"><a href="home.html">EventHub</a></div>
+    <nav class="nav-links" id="navbar-links"></nav>
+  </header>
+  <main class="container">
+    <div class="page-header">
+      <h1>Admin Dashboard</h1>
+      <p class="text-muted">Manage events and bookings efficiently</p>
+    </div>
+    <!-- Admin Stats -->
+    <div class="admin-stats">
+      <div class="stat-card" title="Total Events">
+        <span class="stat-icon">🎫</span>
+        <h3 id="adminTotalEvents">0</h3>
+        <p>Total Events</p>
+      </div>
+      <div class="stat-card" title="Total Bookings">
+        <span class="stat-icon">📅</span>
+        <h3 id="adminTotalBookings">0</h3>
+        <p>Total Bookings</p>
+      </div>
+      <div class="stat-card" title="Total Revenue">
+        <span class="stat-icon">💰</span>
+        <h3 id="adminRevenue">₹0</h3>
+        <p>Total Revenue</p>
+      </div>
+      <div class="stat-card" title="Total Users">
+        <span class="stat-icon">👤</span>
+        <h3 id="adminUsers">0</h3>
+        <p>Total Users</p>
+      </div>
+    </div>
+    <!-- Search & Filter -->
+    <div class="admin-search-filter">
+      <input type="text" id="adminSearchInput" placeholder="Search events or bookings..." />
+      <select id="adminCategoryFilter">
+        <option value="all">All Categories</option>
+        <option value="Music Concert">Music Concert</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Conference">Conference</option>
+        <option value="Seminar">Seminar</option>
+        <option value="Sport">Sport</option>
+        <option value="Wedding">Wedding</option>
+        <option value="Live Performance">Live Performance</option>
+        <option value="Movies">Movies</option>
+      </select>
+      <button class="btn btn-outline" onclick="exportAdminBookings()">Export Bookings</button>
+    </div>
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" onclick="switchAdminTab('events')">Events</button>
+      <button class="tab" onclick="switchAdminTab('bookings')">Bookings</button>
+    </div>
+    <!-- Edit/Delete Modal -->
+    <div id="adminModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="adminModalTitle">Edit Event</h3>
+          <button class="close-btn" onclick="closeAdminModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="adminModalBody"></div>
+        <div class="modal-footer" id="adminModalFooter"></div>
+      </div>
+    </div>
+    <!-- Events Tab -->
+    <div id="adminEventsTab">
+      <div class="section-header">
+        <h2>All Events</h2>
+        <button class="btn btn-primary" onclick="showEventForm()">+ Add Event</button>
+      </div>
+      <!-- Event Form (hidden by default) -->
+      <div id="eventFormCard" class="card hidden" style="margin-bottom:1.5rem;">
+        <h3 id="eventFormTitle">Add New Event</h3>
+        <form id="eventForm" onsubmit="handleEventSubmit(event)">
+          <input type="hidden" id="editEventId" />
+          <div class="form-row">
+            <div class="form-group"><label>Event Name</label><input type="text" id="evtName" required /></div>
+            <div class="form-group"><label>Category</label>
+              <select id="evtCategory" required>
+                <option value="">Select Category</option>
+                <option value="Music Concert">Music Concert</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Conference">Conference</option>
+                <option value="Seminar">Seminar</option>
+                <option value="Sport">Sport</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Live Performance">Live Performance</option>
+                <option value="Movies">Movies</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label>Description</label><textarea id="evtDesc" rows="3" required></textarea></div>
+          <div class="form-row">
+            <div class="form-group"><label>Date</label><input type="date" id="evtDate" required /></div>
+            <div class="form-group"><label>Time</label><input type="time" id="evtTime" required /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Venue</label><input type="text" id="evtVenue" required /></div>
+            <div class="form-group"><label>City</label><input type="text" id="evtCity" required /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Price (₹)</label><input type="number" id="evtPrice" min="0" required /></div>
+            <div class="form-group"><label>Total Seats</label><input type="number" id="evtTotalSeats" min="1" required /></div>
+          </div>
+          <div class="form-group">
+            <label>Image URL</label>
+            <input type="url" id="evtImage" placeholder="https://..." required oninput="previewEventImage()" />
+            <div id="evtImagePreview" class="image-preview"></div>
+          </div>
+          <div class="form-group">
+            <label>Details URL</label>
+            <input type="url" id="evtLink" placeholder="e.g. event_details.html" />
+            <small style="color:#57606f;">Optional: link to a page with details.</small>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="eventFormBtn">Add Event</button>
+            <button type="button" class="btn btn-outline" onclick="hideEventForm()">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Event</th><th>Category</th><th>Date</th><th>City</th><th>Price</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminEventsBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Bookings Tab -->
+    <div id="adminBookingsTab" class="hidden">
+      <h2>All Bookings</h2>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>User</th><th>Event</th><th>Category</th><th>Date</th><th>Tickets</th><th>Total</th><th>Status</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminBookingsBody"></tbody>
+        </table>
+      </div>
+      <div id="noAdminBookings" class="empty-state hidden">
+        <p>No bookings found.</p>
+      </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    protectPage('admin');
+    initAdminPage();
+    document.getElementById('adminSearchInput')?.addEventListener('input', filterAdmin);
+    document.getElementById('adminCategoryFilter')?.addEventListener('change', filterAdmin);
+  </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EventHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+<div class="logo">
+<a href="home.html">EventHub</a>
+</div>
+
+<nav class="nav-links" id="navbar-links"></nav>
+</header>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+<div class="hero-center">
+
+<h1>Discover Events That Move You</h1>
+<p>Concerts, workshops & live shows happening near you.</p>
+
+<div class="search-box">
+
+<input type="text" id="searchInput" placeholder="Search events..." oninput="showSuggestions()">
+
+<ul id="suggestions" class="suggestions"></ul>
+
+<select id="categorySelect">
+<option value="all">All Categories</option>
+<option value="concert">Concert</option>
+<option value="conference">Conference</option>
+<option value="workshop">Workshop</option>
+<option value="seminar">Seminar</option>
+<option value="sport">Sport</option>
+<option value="movies">Movies</option>
+<option value="live">Live Performance</option>
+<option value="prerelease">Movie Pre-Release</option>
+</select>
+
+<button onclick="searchEvents()">Search</button>
+
+</div>
+
+<a href="events.html" class="hero-btn">Explore Events</a>
+
+</div>
+
+</section>
+
+
+<!-- TRENDING EVENTS -->
+
+<section class="trending">
+
+<h2>🔥 Trending Events</h2>
+
+<div class="slider">
+
+<div class="slide-track">
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=800&q=80">
+<p>Music Festival</p>
+</div>
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80">
+<p>Tech Conference</p>
+</div>
+
+<div class="slide">
+<img src="https://chicagorentals.com/wp-content/uploads/2025/01/Best-Comedy-Clubs-in-Chicago-Feature-Image.jpg">
+<p>Comedy Night</p>
+</div>
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80">
+<p>Startup Workshop</p>
+</div>
+
+<!-- DUPLICATED FOR INFINITE LOOP -->
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=800&q=80">
+<p>Music Festival</p>
+</div>
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80">
+<p>Tech Conference</p>
+</div>
+
+<div class="slide">
+<img src="https://chicagorentals.com/wp-content/uploads/2025/01/Best-Comedy-Clubs-in-Chicago-Feature-Image.jpg">
+<p>Comedy Night</p>
+</div>
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80">
+<p>Startup Workshop</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EXPLORE CATEGORY -->
+
+<section class="explore">
+
+<h2>Explore by Category</h2>
+
+<div class="category-grid">
+
+<a href="events.html?category=concert" class="category">
+<img src="images/music.jpg">
+<span>Music</span>
+</a>
+
+<a href="events.html?category=sport" class="category">
+<img src="images/sports.jpg">
+<span>Sports</span>
+</a>
+
+<a href="events.html?category=live" class="category">
+<img src="images/comedy.jpg">
+<span>Comedy</span>
+</a>
+
+<a href="events.html?category=workshop" class="category">
+<img src="images/workshop.jpg">
+<span>Workshop</span>
+</a>
+
+<a href="events.html?category=conference" class="category">
+<img src="images/festival.jpg">
+<span>Festival</span>
+</a>
+
+<a href="events.html?category=movies" class="category">
+<img src="images/movies.jpg">
+<span>Movies</span>
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+<h2>About EventHub</h2>
+
+<p>
+EventHub helps you discover and book trending events happening around you.
+Enjoy secure bookings and unforgettable experiences.
+</p>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>Ready to Experience Something Amazing?</h2>
+
+<a href="events.html" class="cta-btn">Book Now</a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+<p>© 2026 EventHub. All Rights Reserved.</p>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>

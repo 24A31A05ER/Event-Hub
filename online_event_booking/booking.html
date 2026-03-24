@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Tickets - EventHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo"><a href="home.html">EventHub</a></div>
+    <nav class="nav-links" id="navbar-links"></nav>
+  </header>
+  <main class="container">
+    <div class="booking-layout" id="bookingLayout">
+      <!-- Event Info -->
+      <div class="card booking-event-info" id="bookingEventInfo">
+        <!-- Filled by JS -->
+      </div>
+      <!-- Booking Form -->
+      <div class="card booking-form-card">
+        <h2>Book Tickets</h2>
+        <div id="bookingMsg" class="alert hidden"></div>
+        <form id="bookingForm" onsubmit="handleBooking(event)">
+          <div class="form-group">
+            <label for="bookName">Full Name</label>
+            <input type="text" id="bookName" required />
+          </div>
+          <div class="form-group">
+            <label for="bookEmail">Email</label>
+            <input type="email" id="bookEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="bookTickets">Number of Tickets</label>
+            <input type="number" id="bookTickets" min="1" max="10" value="1" required oninput="updateTotal()" />
+          </div>
+          <div class="price-summary">
+            <div class="price-row"><span>Price per ticket</span><span id="pricePerTicket">₹0</span></div>
+            <div class="price-row total"><span>Total</span><span id="totalPrice">₹0</span></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+    <div id="noEvent" class="empty-state hidden">
+      <h3>Event not found</h3>
+      <p>The selected event could not be loaded. <a href="events.html">Browse events</a></p>
+    </div>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    protectPage('user');
+    renderNavbar();
+    initBookingPage();
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Events | Event Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="events.css">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header class="navbar">
+<div class="logo">
+<a href="home.html">EventHub</a>
+</div>
+
+<nav class="nav-links" id="navbar-links"></nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h1>Explore Our Events</h1>
+  <p>Book tickets for concerts, conferences, weddings, sports events and more.</p>
+</section>
+
+<!-- Search & Filter -->
+<section class="search-filter">
+  <input type="text" id="searchInput" placeholder="Search events...">
+  <select id="categoryFilter">
+    <option value="all">All Categories</option>
+    <option value="concert">Concert</option>
+    <option value="conference">Conference</option>
+    <option value="workshop">Workshop</option>
+    <option value="seminar">Seminar</option>
+    <option value="wedding">Wedding</option>
+    <option value="sport">Sport</option>
+    <option value="movies">Movies</option>
+    <option value="live">Live Performance</option>
+    <option value="prerelease">Movie Pre-Release</option>
+  </select>
+</section>
+
+<!-- Events Grid -->
+<section id="eventsContainer" class="events-container"></section>
+
+<footer>
+  <p>© 2026 Event Hub. All Rights Reserved.</p>
+</footer>
+<script src="script.js"></script>
+<script>
+  renderNavbar();
+  renderEventsPage();
+  filterEvents();
+</script>
+
+</body>
+</html>
