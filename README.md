@@ -27,13 +27,31 @@ Event organizers need an easy-to-use platform for users to discover upcoming eve
 ## 📁 Project Structure
 ```
 
-event-hub/
-├── index.html       # Main landing page
-├── style.css        # All styles and responsive design
-├── script.js        # Event handling and booking logic
-├── events.json      # Sample event data
-└── README.md        # Project documentation
-
+online_event_booking/
+├── images/                  # Folder for all image assets
+├── admin.html               # Admin dashboard/interface
+├── booking.html             # Main booking page
+├── booking_history.html     # User's previous bookings
+├── concert.html             # Concert category page
+├── conference.html          # Conference category page
+├── event_details.html       # Specific details for an event
+├── events.css               # Stylesheet for event-related pages
+├── events.html              # Main events listing page
+├── home.html                # Landing page / Home
+├── live-performance.html    # Live performance category page
+├── login.html               # User authentication page
+├── movies.html              # Movie category page
+├── prerelease.html          # Pre-release event page
+├── profile.html             # User profile/settings
+├── README.md                # Project documentation
+├── register.html            # New user registration
+├── script-secure.js         # Security-related JavaScript logic
+├── script.js                # Main application JavaScript
+├── seminar.html             # Seminar category page
+├── sport.html               # Sports category page
+├── style.css                # Global styles
+├── wedding.html             # Wedding category page
+└── workshop.html            # Workshop category page
 ````
 
 ---
